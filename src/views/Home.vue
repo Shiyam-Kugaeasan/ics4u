@@ -21,8 +21,8 @@ const login = () => {
     <div class="home">
         <h1>Login</h1>
         <form @submit.prevent="login()">
-            <input type="text">
-            <input type="password">
+            <input type="text" placeholder="Username" v-model="username">
+            <input type="password" placeholder="Password" v-model="password">
             <input type="submit">
         </form>
         <div v-if="error">
@@ -32,5 +32,7 @@ const login = () => {
 </template>
 
 <style scoped>
-
+.home {
+    display: flex;
+}
 </style>
