@@ -4,7 +4,9 @@ import axios from "axios";
 </script>
 
 <template>
-<div></div>
+<div>
+  <p>Hello</p>
+</div>
 </template>
 
 <style scoped>
