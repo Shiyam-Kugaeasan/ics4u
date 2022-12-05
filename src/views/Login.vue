@@ -18,7 +18,7 @@ const login = () => {
 </script>
 
 <template>
-  <div class="home">
+  <div class="login">
     <h1>Login</h1>
     <form @submit.prevent="login()">
       <input type="text" placeholder="Username" v-model="username">
@@ -32,7 +32,7 @@ const login = () => {
 </template>
 
 <style scoped>
-.home {
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
