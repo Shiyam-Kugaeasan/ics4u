@@ -1,13 +1,13 @@
 <script setup>
 import axios from "axios";
-import Movies from "../components/Movies.vue";
+import MoviesVue from "../components/Movies.vue";
 </script>
 
 <template>
 <div>
   <p>Hello</p>
   <Suspense>
-    <Movies />
+    <MoviesVue />
   </Suspense>
 </div>
 </template>
