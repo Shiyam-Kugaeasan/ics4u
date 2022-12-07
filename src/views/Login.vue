@@ -21,8 +21,12 @@ const login = () => {
   <div class="login">
     <h1>Login</h1>
     <form @submit.prevent="login()">
+      <p>Username: </p>
       <input type="text" placeholder="Username" v-model="username">
+      <br>
+      <p>Password: </p>
       <input type="password" placeholder="Password" v-model="password">
+      <br>
       <input type="submit">
     </form>
     <div v-if="error">
@@ -39,6 +43,7 @@ const login = () => {
   align-items: center;
   width: 100vw;
   height: 100vh;
+  background-color: black;
 }
 
 form {
