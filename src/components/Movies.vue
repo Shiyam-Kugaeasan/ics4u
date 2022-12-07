@@ -4,24 +4,38 @@ import { ref } from 'vue';
 import {useStore} from "../store/store.js";
 
 const store = useStore();
-// const movie = ref(false);
+const number = ref(null);
+const movie = ref(false);
 
-
-const movie = (
-  await axios.get("https://api.themoviedb.org/3/trending/movie/week?api_key=d074056107be35c2b2df712431dcd31f")
-).data;
+const getMovies = async () => {
+  const data = number.value;
+  movie.value = (
+    await axios.get("https://api.themoviedb.org/3/movie/634649", {
+      params: {
+        movie_id: data,
+        api_key: "d074056107be35c2b2df712431dcd31f"
+      },
+    })
+  ).data;
+};
 </script>
 
 <template>
   <div>
+    <select v-model="number">
+      <option value="634649"></option>
+    </select>
+  </div>
+  <div v-if="getMovies">
     <p>Bye</p>
-    <p>{{movie.title}}</p>
-    <!-- <img src="https://image.tmdb.org/t/p/w500/{{movie.data.poster_path}}" alt="{{movie.title}} poster"> -->
+    <!-- <p class="title">{{ movie.title }}</p> -->
   </div>
 </template>
 
 <style scoped>
-
+.title {
+  background-color: black;
+}
 </style>
 
 <!-- {

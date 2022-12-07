@@ -10,8 +10,9 @@
 .footer {
     background-color: black;
     width: 100vw;
+    display: flex;
     align-self: flex-end;
-    align-content: center;
+    justify-content: center;
     z-index: 3;
 }
 </style>

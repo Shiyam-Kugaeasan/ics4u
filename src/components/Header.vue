@@ -28,8 +28,9 @@ import {useRouter} from "vue-router"
     background-color: red;
     border: 5px solid black;
     border-radius: 10px;    
-    padding-left: 10%;
-    padding-right: 10%;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    padding: 1%;
 }
 
 .button:hover {
