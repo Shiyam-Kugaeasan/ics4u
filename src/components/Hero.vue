@@ -9,8 +9,10 @@
 <style scoped>
 .hero {
     width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: row;
+    background-image: url("hero-background.jpg");
 }
 
 .text {

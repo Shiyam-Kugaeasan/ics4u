@@ -26,9 +26,11 @@ const getMovies = async () => {
       <option value="566525"></option>
       <option value="324857"></option>
     </select>
-    <div v-if="getMovies">
+    <button @click="getMovies">get</button>
+    <div v-if="movie">
       <p>hello</p>
-      <p>{{movie.title}}</p>
+      <p class="title">{{movie.title}}</p>
+      <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="poster">
     </div>
   </div>
 </template>
@@ -40,11 +42,13 @@ const getMovies = async () => {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.25rem;
 }
-
-.movieIds {
-  display: none;
-}
 </style>>
+
+
+
+
+
+
 
 <!-- <script setup>
 import axios from "axios";
