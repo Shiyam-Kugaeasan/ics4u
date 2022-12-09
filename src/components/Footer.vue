@@ -2,7 +2,7 @@
 
 <template>
 <div class="footer">
-    <p>The Movie Site is a place to get movies.</p>
+    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam est, necessitatibus nisi rem nihil placeat voluptatum praesentium quo fuga, sed, iste rerum minima corrupti quas. Officia nisi explicabo accusamus dolorem.</p>
 </div>
 </template>
 
@@ -14,5 +14,10 @@
     align-self: flex-end;
     justify-content: center;
     z-index: 3;
+}
+
+.info {
+    margin: 0% 40%;
+    font-size: larger;
 }
 </style>

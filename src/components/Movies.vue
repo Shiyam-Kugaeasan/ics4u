@@ -27,10 +27,10 @@ const getMovies = async () => {
       <option value="324857"></option>
     </select>
     <button @click="getMovies">get</button>
+    <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg" alt="poster">
     <div v-if="movie">
       <p>hello</p>
       <p class="title">{{movie.title}}</p>
-      <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="poster">
     </div>
   </div>
 </template>
