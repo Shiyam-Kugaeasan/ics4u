@@ -19,6 +19,11 @@ import MoviesVue from "../components/Movies.vue";
   background-color: black;
   display: flex;
   flex-direction: row;
-  width: 100vh;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+h1 {
+  margin: 1%;
 }
 </style>

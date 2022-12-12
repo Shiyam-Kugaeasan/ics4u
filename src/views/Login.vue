@@ -19,13 +19,15 @@ const login = () => {
 
 <template>
   <div class="login">
+    <div>
+    </div>
     <h1>Login</h1>
     <form @submit.prevent="login()">
       <p>Username: </p>
-      <input type="text" placeholder="Username" v-model="username">
+      <input type="text" placeholder="Username" v-model="username" class="username">
       <br>
-      <p>Password: </p>
-      <input type="password" placeholder="Password" v-model="password">
+      <p class="password-text">Password: </p>
+      <input type="password" placeholder="Password" v-model="password" class="password">
       <br>
       <input type="submit">
     </form>
@@ -49,34 +51,14 @@ const login = () => {
 form {
   display: flex;
   flex: column;
+  margin: 5%;
+}
+
+h1 {
+  margin-bottom: 5%;
+}
+
+.password-text {
+  margin-left: 5%;
 }
 </style>
-
-<!-- <script setup>
-import { ref } from 'vue';
-import SiteModal from '../components/SiteModal.vue';
-
-const showModal = ref(false);
-const selectedId = ref(0);
-
-const openModal = (id) => {
-  showModal.value = true;
-  selectedId.value = id;
-};
-
-const closeModal = () => {
-  showModal.value = false;
-};
-</script>
-
-<template>
-  <div>
-    <h1>Login</h1>
-    <button @click="openModal(5000)">Modal</button>
-  </div>
-  <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
-</template>
-
-<style scoped>
-
-</style> -->

@@ -1,14 +1,26 @@
 <script setup>
-import axios from 'axios';
-import { ref } from 'vue';
 import { useStore } from '../store/store';
+import { ref } from 'vue';
+import SiteModal from '../components/SiteModal.vue';
 
 const store = useStore();
-// const number = ref(null);
-// const movie = ref(false);
+const number = ref(null);
+const movie = ref(false);
 
-// const getMovies = async () => {
-//   const data = number.value;
+const showModal = ref(false);
+const selectedId = ref(0);
+
+const openModal = (id) => {
+  showModal.value = true;
+  selectedId.value = id;
+};
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+// const getInfo = async () => {
+//   const data = store.movies.movie.id;
 //   movie.value = (
 //     await axios.get(`https://api.themoviedb.org/3/movie/${data}`, {
 //       params: {
@@ -21,8 +33,9 @@ const store = useStore();
 
 <template>
   <div>
-    <img v-for="movies in store" src="movie.poster_path" alt="poster">
+    <img v-for="movies in store" :src="movie.poster_path" alt="poster" @click="openModal(movie.id)">
   </div>
+  <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
 </template>
 
 <style scoped>
@@ -33,56 +46,9 @@ const store = useStore();
   font-size: 1.25rem;
 }
 
-.cart {
-  display: flex;
+img {
+  width: 200px;
+  height: 300px;
+  margin: 1%;
 }
 </style>>
-
-<!-- <script setup>
-const props = defineProps(["id"]);
-const emits = defineEmits(["toggleModal"]);
-</script>
-
-<template>
-  <Teleport to="body">
-    <div class="modal-outer-container" @click.self="emits('toggleModal')">
-      <div class="modal-inner-container">
-        <button class="close-button" @click="emits('toggleModal')">X</button>
-        <h1>{{ props.id }}</h1>
-      </div>
-    </div>
-  </Teleport>
-</template>
-
-<style scoped>
-.modal-outer-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background: #00000099;
-  z-index: 3;
-}
-
-.modal-outer-container .modal-inner-container {
-  background-color: #1F2123;
-  width: clamp(280px, 100%, 800px);
-  height: 400px;
-  position: relative;
-}
-
-.modal-outer-container .modal-inner-container .close-button {
-  position: absolute;
-  right: 0px;
-  padding: 1rem;
-  border: none;
-  background: #1F2123;
-  font-weight: bold;
-  font-size: 1.25rem;
-  color: white;
-}
-</style> -->
