@@ -2,6 +2,10 @@
 import HeaderVue from '../components/Header.vue';
 import HeroVue from '../components/Hero.vue';
 import FooterVue from '../components/Footer.vue';
+import { useStore } from '../store/store';
+
+const store = useStore();
+store.getMovies();
 </script>
 
 <template>
