@@ -9,6 +9,7 @@ const emits = defineEmits(["toggleModal"]);
       <div class="modal-inner-container">
         <button class="close-button" @click="emits('toggleModal')">X</button>
         <h1>{{ props.id }}</h1>
+        <button class="purchase">Purchase</button>
       </div>
     </div>
   </Teleport>
@@ -44,5 +45,16 @@ const emits = defineEmits(["toggleModal"]);
   font-weight: bold;
   font-size: 1.25rem;
   color: white;
+}
+
+.purchase {
+  background-color: red;
+  color: black;
+  border-radius: 12px;
+  padding: 2% 4%;
+}
+
+.purchase:hover {
+  background-color: white;
 }
 </style>

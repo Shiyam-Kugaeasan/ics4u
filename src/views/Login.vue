@@ -19,20 +19,20 @@ const login = () => {
 
 <template>
   <div class="login">
-    <div>
-    </div>
-    <h1>Login</h1>
-    <form @submit.prevent="login()">
-      <p>Username: </p>
-      <input type="text" placeholder="Username" v-model="username" class="username">
-      <br>
-      <p class="password-text">Password: </p>
-      <input type="password" placeholder="Password" v-model="password" class="password">
-      <br>
-      <input type="submit">
-    </form>
-    <div v-if="error">
-      <p>Incorrect username or password.</p>
+    <div class="login-box">
+      <h1>Login</h1>
+      <form @submit.prevent="login()">
+        <p>Username: </p>
+        <input type="text" placeholder="Username" v-model="username" class="username">
+        <br>
+        <p class="password-text">Password: </p>
+        <input type="password" placeholder="Password" v-model="password" class="password">
+        <br>
+        <input type="submit">
+      </form>
+      <div v-if="error">
+        <p>Incorrect username or password.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -40,12 +40,21 @@ const login = () => {
 <style scoped>
 .login {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: black;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 50vh;
+  background-color: rgb(56, 56, 56);
 }
 
 form {

@@ -1,11 +1,14 @@
 <script setup>
 import MoviesVue from "../components/Movies.vue";
+import { useRouter } from "vue-router";
 </script>
 
 <template>
   <div class="account-header">
     <h1>Movies</h1>
-    <button class="cart">Shopping Cart</button>
+    <RouterLink to="/purchases" custom v-slot="{navigate}">
+      <img src="shopping-cart.png" alt="To purchases." @click="navigate" role="link" class="cart">
+    </RouterLink>
   </div>
   <div>
     <Suspense>
@@ -24,6 +27,17 @@ import MoviesVue from "../components/Movies.vue";
 }
 
 h1 {
+  margin-left: 1%;
+  padding: 1%;
+  width: 100px;
+  font-size: 45px;
+  height: auto;
+  text-align: center;
+}
+
+.cart {
+  width: 80px;
+  height: auto;
   margin: 1%;
 }
 </style>
