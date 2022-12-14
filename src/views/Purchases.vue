@@ -1,5 +1,8 @@
 <script setup>
 import { useStore } from '../store/store';
+import axios from 'axios';
+
+//trending
 </script>
 
 <template>

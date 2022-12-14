@@ -2,10 +2,10 @@
 import { useStore } from '../store/store';
 import { ref } from 'vue';
 import SiteModal from '../components/SiteModal.vue';
+import axios from 'axios';
 
 const store = useStore();
-const number = ref(null);
-const movie = ref(false);
+await store.getMovies();
 
 const showModal = ref(false);
 const selectedId = ref(0);
@@ -19,6 +19,15 @@ const closeModal = () => {
   showModal.value = false;
 };
 
+// async const getMovies
+//       let data = (await axios.get("https://api.themoviedb.org/3/trending/movie/week", {
+//         params: {
+//           api_key: "d074056107be35c2b2df712431dcd31f",
+//         }
+//       })).data.results;
+
+// const number = ref(null);
+// const movie = ref(false);
 // const getInfo = async () => {
 //   const data = store.movies.movie.id;
 //   movie.value = (
@@ -33,7 +42,7 @@ const closeModal = () => {
 
 <template>
   <div>
-    <img v-for="movies in store" :src="movie.poster_path" alt="poster" @click="openModal(movie.id)">
+    <img v-for="movie in store" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" alt="poster" @click="openModal(movie.id)" />
   </div>
   <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
 </template>
