@@ -1,6 +1,5 @@
 <script setup>
 import MoviesVue from "../components/Movies.vue";
-import { useRouter } from "vue-router";
 </script>
 
 <template>

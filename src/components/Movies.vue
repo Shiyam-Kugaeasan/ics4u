@@ -2,7 +2,6 @@
 import { useStore } from '../store/store';
 import { ref } from 'vue';
 import SiteModal from '../components/SiteModal.vue';
-import axios from 'axios';
 
 const store = useStore();
 await store.getMovies();
@@ -20,6 +19,7 @@ const closeModal = () => {
   showModal.value = false;
 };
 
+console.log(store);
 // async const getMovies
 //       let data = (await axios.get("https://api.themoviedb.org/3/trending/movie/week", {
 //         params: {

@@ -1,6 +1,12 @@
 <script setup>
+import { useStore } from '../store/store';
 const props = defineProps(["id"]);
 const emits = defineEmits(["toggleModal"]);
+
+const store = useStore();
+await store.getMovies();
+
+// const purchase = store.map(store.movies);
 </script>
 
 <template>
@@ -9,7 +15,7 @@ const emits = defineEmits(["toggleModal"]);
       <div class="modal-inner-container">
         <button class="close-button" @click="emits('toggleModal')">X</button>
         <h1>{{ props.id }}</h1>
-        <button class="purchase">Purchase</button>
+        <button class="purchase" @click="purchase">Purchase</button>
       </div>
     </div>
   </Teleport>

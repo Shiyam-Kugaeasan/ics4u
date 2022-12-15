@@ -1,7 +1,7 @@
 <script setup>
 import { useStore } from '../store/store';
 import axios from 'axios';
-
+import SiteModalVue from '../components/SiteModal.vue';
 //trending
 </script>
 
@@ -11,6 +11,7 @@ import axios from 'axios';
   </div>
   <div>
     <p>Your Purchases:</p>
+    <p></p>
   </div>
 </template>
 
