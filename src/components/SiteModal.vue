@@ -1,12 +1,21 @@
 <script setup>
 import { useStore } from '../store/store';
+import { ref } from 'vue';
+
 const props = defineProps(["id"]);
 const emits = defineEmits(["toggleModal"]);
-
 const store = useStore();
-await store.getMovies();
+const info = ref(false);
+const data = store.movies;
 
-// const purchase = store.map(store.movies);
+// const getInfo = async () => {
+//   info.value = (
+//     await axios.get("https://api.themoviedb.org/3/movie/", {
+//         params: {
+//           api_key: "d074056107be35c2b2df712431dcd31f",
+//         }
+//       })).data.results;
+//     }
 </script>
 
 <template>
@@ -15,6 +24,7 @@ await store.getMovies();
       <div class="modal-inner-container">
         <button class="close-button" @click="emits('toggleModal')">X</button>
         <h1>{{ props.id }}</h1>
+        <p>{{}}</p>
         <button class="purchase" @click="purchase">Purchase</button>
       </div>
     </div>

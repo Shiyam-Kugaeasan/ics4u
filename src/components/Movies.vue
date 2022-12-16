@@ -5,7 +5,6 @@ import SiteModal from '../components/SiteModal.vue';
 
 const store = useStore();
 await store.getMovies();
-const poster = store.movies;
 
 const showModal = ref(false);
 const selectedId = ref(0);
@@ -43,7 +42,7 @@ console.log(store);
 
 <template>
   <div>
-    <img v-for="movie in poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" alt="poster" @click="openModal(movie.id)" />
+    <img v-for="movie in store.movies" :src="`https://image.tmdb.org/t/p/w500${movie.poster}`" alt="poster" @click="openModal(movie.id)" />
   </div>
   <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
 </template>
