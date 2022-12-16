@@ -20,30 +20,11 @@ const closeModal = () => {
 };
 
 console.log(store);
-// async const getMovies
-//       let data = (await axios.get("https://api.themoviedb.org/3/trending/movie/week", {
-//         params: {
-//           api_key: "d074056107be35c2b2df712431dcd31f",
-//         }
-//       })).data.results;
-
-// const number = ref(null);
-// const movie = ref(false);
-// const getInfo = async () => {
-//   const data = store.movies.movie.id;
-//   movie.value = (
-//     await axios.get(`https://api.themoviedb.org/3/movie/${data}`, {
-//       params: {
-//         api_key: "d074056107be35c2b2df712431dcd31f",
-//       },
-//     })
-//   ).data;
-// }; 
 </script>
 
 <template>
   <div>
-    <img v-for="movie in poster" :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" alt="poster" @click="openModal(movie.id)" />
+    <img v-for="movie in poster" :src="poster[poster]" alt="poster" @click="openModal(movie.id)" />
   </div>
   <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
 </template>
