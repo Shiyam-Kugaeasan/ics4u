@@ -18,11 +18,9 @@ export const useStore = defineStore('store', {
       this.movies = data.map((movie) => {
         return {
           id: movie.id,
-          poster: movie.poster_path,
+          poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
         }
       });
     },
   }
 });
-
-// "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg"
