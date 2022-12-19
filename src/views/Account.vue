@@ -11,7 +11,7 @@ import MoviesVue from "../components/Movies.vue";
   </div>
   <div>
     <Suspense>
-      <MoviesVue />
+      <MoviesVue class="movies"/>
     </Suspense>
   </div>
 </template>
@@ -32,6 +32,10 @@ h1 {
   font-size: 45px;
   height: auto;
   text-align: center;
+}
+
+.movies {
+  height: 100vh;
 }
 
 .cart {
