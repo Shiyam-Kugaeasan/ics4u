@@ -1,12 +1,28 @@
 <script setup>
 import { useStore } from '../store/store';
+import axios from 'axios';
+import { ref } from 'vue';
 const props = defineProps(["id"]);
+// const title = defineProps(["title"]);
 const emits = defineEmits(["toggleModal"]);
 
 const store = useStore();
 await store.getMovies();
+const info = ref(false);
 
 // const purchase = store.map(store.movies);
+const getInfo = async () => {
+  const movieID = 76600;
+  info.value = (
+    await axios.get(`https://api.themoviedb.org/3/movie/${movieID}/`, {
+      params: {
+        api_key: "d074056107be35c2b2df712431dcd31f",
+      },
+    })
+  ).data.results;
+};
+
+await getInfo;
 </script>
 
 <template>
@@ -15,7 +31,12 @@ await store.getMovies();
       <div class="modal-inner-container">
         <button class="close-button" @click="emits('toggleModal')">X</button>
         <h1>{{ props.id }}</h1>
+        <Suspense>
+          <p>hello{{movie.data.title}}hello</p>
+        </Suspense>
+        <!-- <img v-for="movie in store.movies" :src="movie.poster" alt="" class="poster"> -->
         <button class="purchase" @click="purchase">Purchase</button>
+        <!-- <p class="title">Title: {{info.title}}</p> -->
       </div>
     </div>
   </Teleport>
@@ -51,6 +72,16 @@ await store.getMovies();
   font-weight: bold;
   font-size: 1.25rem;
   color: white;
+}
+
+.poster {
+  height: 100px;
+  width: 50px;
+}
+
+.title {
+  z-index: 3;
+  color: red;
 }
 
 .purchase {

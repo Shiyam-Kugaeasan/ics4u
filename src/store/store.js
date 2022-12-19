@@ -5,6 +5,7 @@ export const useStore = defineStore('store', {
   state: () => {
     return {
       movies: [],
+      // cart[],
     }
   },
   actions: {
@@ -18,7 +19,8 @@ export const useStore = defineStore('store', {
       this.movies = data.map((movie) => {
         return {
           id: movie.id,
-          poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+          poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+          title: movie.title,
         }
       });
     },

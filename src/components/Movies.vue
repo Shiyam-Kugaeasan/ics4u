@@ -5,14 +5,15 @@ import SiteModal from '../components/SiteModal.vue';
 
 const store = useStore();
 await store.getMovies();
-const poster = store.movies;
 
 const showModal = ref(false);
 const selectedId = ref(0);
+const selectedTitle = ref(0);
 
-const openModal = (id) => {
+const openModal = (title, id) => {
   showModal.value = true;
-  selectedId.value = id;
+  selectedId.value = title;
+  selectedTitle.value = id;
 };
 
 const closeModal = () => {
@@ -24,9 +25,10 @@ console.log(store);
 
 <template>
   <div>
-    <img v-for="movie in poster" :src="poster[poster]" alt="poster" @click="openModal(movie.id)" />
+    <img v-for="movie in store.movies" :src="movie.poster" alt="poster" @click="openModal()" />
   </div>
   <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
+  <p v-for="movie in store.movies" class="titit"> {{movie.title}}</p>
 </template>
 
 <style scoped>
@@ -37,9 +39,14 @@ console.log(store);
   font-size: 1.25rem;
 }
 
+.titit {
+  z-index: 4;
+  color: black;
+}
+
 img {
   width: 200px;
   height: 300px;
-  margin: 1%;
+  margin: 2%;
 }
 </style>>
