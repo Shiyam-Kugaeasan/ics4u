@@ -7,20 +7,18 @@ const emits = defineEmits(["toggleModal"]);
 
 const store = useStore();
 await store.getMovies();
-// movie in store.movies;
 
-// const info = ref(false);
-// const purchase = store.map(store.movies);
-// const getInfo = async () => {
-//   const movieID = 76600;
-//   info.value = (
-//     await axios.get(`https://api.themoviedb.org/3/movie/${movieID}/`, {
-//       params: {
-//         api_key: "d074056107be35c2b2df712431dcd31f",
-//       },
-//     })
-//   ).data.results;
-// };
+const getData = async () => {
+  const data = (
+    await axios.get(`https://api.themoviedb.org/3/movie/${props.id}`, {
+      params: {
+        api_key: "d074056107be35c2b2df712431dcd31f",
+      },
+    })
+  ).data.results;
+};
+
+// await getData();
 </script>
 
 <template>
@@ -29,8 +27,9 @@ await store.getMovies();
       <div class="modal-inner-container">
         <button class="close-button" @click="emits('toggleModal')">X</button>
         <h1>{{ props.id }}</h1>
-        <!-- <p>{{ movie.id }}</p> -->
-        <!-- <img v-for="movie in store.movies" :src="movie.poster" alt="" class="poster"> -->
+        <div>
+          <p>{{ data.title }}</p>
+        </div>
         <button class="purchase" @click="purchase">Purchase</button>
       </div>
     </div>
@@ -50,12 +49,15 @@ await store.getMovies();
   background: #00000099;
   z-index: 3;
 }
+
 .modal-outer-container .modal-inner-container {
   background-color: #1F2123;
+  color: white;
   width: clamp(280px, 100%, 800px);
   height: 400px;
   position: relative;
 }
+
 .modal-outer-container .modal-inner-container .close-button {
   position: absolute;
   right: 0px;
@@ -66,21 +68,34 @@ await store.getMovies();
   font-size: 1.25rem;
   color: white;
 }
+
 .poster {
   height: 100px;
   width: 50px;
 }
+
 .title {
   z-index: 3;
   color: red;
 }
+
 .purchase {
   background-color: red;
   color: black;
   border-radius: 12px;
   padding: 2% 4%;
 }
+
 .purchase:hover {
   background-color: white;
 }
 </style>
+
+<!-- infor = [];
+  this.infor = data.map((movie) => {
+    return {
+      id: movie.id,
+      poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+      title: movie.title,
+        }
+      }); -->

@@ -11,7 +11,7 @@ import MoviesVue from "../components/Movies.vue";
   </div>
   <div>
     <Suspense>
-      <MoviesVue class="movies"/>
+      <MoviesVue />
     </Suspense>
   </div>
 </template>
