@@ -2,22 +2,28 @@
 import { useStore } from '../store/store';
 import axios from 'axios';
 import { ref } from 'vue';
+
 const props = defineProps(["id"]);
 const emits = defineEmits(["toggleModal"]);
 
 const store = useStore();
 await store.getMovies();
+const trigger = ref(null);
+const movie = ref(false);
 
 const getData = async () => {
-  const data = (
+  movie.value = (
     await axios.get(`https://api.themoviedb.org/3/movie/${props.id}`, {
       params: {
         api_key: "d074056107be35c2b2df712431dcd31f",
       },
     })
-  ).data.results;
+  ).data;
 };
 
+console.log(props.id);
+console.log(getData);
+console.log(movie.title);
 // await getData();
 </script>
 
@@ -27,8 +33,11 @@ const getData = async () => {
       <div class="modal-inner-container">
         <button class="close-button" @click="emits('toggleModal')">X</button>
         <h1>{{ props.id }}</h1>
-        <div>
-          <p>{{ data.title }}</p>
+        <button @click="getData">Get</button>
+        <div v-if="movie">
+          <h1>Title: {{ movie.title }}</h1>
+          <p>Release Date: {{ movie.release_date }}</p>
+          <img src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" alt="poster">
         </div>
         <button class="purchase" @click="purchase">Purchase</button>
       </div>
