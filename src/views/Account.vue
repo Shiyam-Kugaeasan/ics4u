@@ -42,5 +42,6 @@ h1 {
   width: 80px;
   height: auto;
   margin: 1%;
+  margin-right: 2%;
 }
 </style>

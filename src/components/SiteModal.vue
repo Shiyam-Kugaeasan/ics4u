@@ -8,8 +8,8 @@ const emits = defineEmits(["toggleModal"]);
 
 const store = useStore();
 await store.getMovies();
-const trigger = ref(null);
 const movie = ref(false);
+// const purchases = new Array(20);
 
 const getData = async () => {
   movie.value = (
@@ -20,11 +20,16 @@ const getData = async () => {
     })
   ).data;
 };
+await getData();
+// const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
-console.log(props.id);
-console.log(getData);
-console.log(movie.title);
-// await getData();
+const purchase = () => {
+  store.cart[store.count] = props.id;
+  store.increment();
+  console.log(store.cart);
+}
+
+
 </script>
 
 <template>
@@ -32,14 +37,13 @@ console.log(movie.title);
     <div class="modal-outer-container" @click.self="emits('toggleModal')">
       <div class="modal-inner-container">
         <button class="close-button" @click="emits('toggleModal')">X</button>
-        <h1>{{ props.id }}</h1>
-        <button @click="getData">Get</button>
-        <div v-if="movie">
-          <h1>Title: {{ movie.title }}</h1>
-          <p>Release Date: {{ movie.release_date }}</p>
-          <img src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" alt="poster">
+        <div v-if="movie" class="items">
+          <h1 class="title">Title: {{ movie.title }}</h1>
+          <p class="release">Release Date: {{ movie.release_date }}</p>
+          <p class="overview">{{ movie.overview }}</p>
+          <!-- <img src="`https://image.tmdb.org/t/p/w500/{{movie.poster_path}}`" alt="poster"> -->
+          <button class="purchase" @click="purchase">Purchase</button>
         </div>
-        <button class="purchase" @click="purchase">Purchase</button>
       </div>
     </div>
   </Teleport>
@@ -78,13 +82,18 @@ console.log(movie.title);
   color: white;
 }
 
+.items {
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+}
 .poster {
   height: 100px;
   width: 50px;
 }
 
-.title {
-  z-index: 3;
+.title .release .overview {
+  padding: 2%;
   color: red;
 }
 
@@ -93,6 +102,7 @@ console.log(movie.title);
   color: black;
   border-radius: 12px;
   padding: 2% 4%;
+  margin: 1% 20%;
 }
 
 .purchase:hover {
@@ -106,5 +116,7 @@ console.log(movie.title);
       id: movie.id,
       poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
       title: movie.title,
-        }
-      }); -->
+    }
+  }); -->
+  <!-- const check = store.cart.find(({id}) => id === purchases);
+  check.bought = true; -->

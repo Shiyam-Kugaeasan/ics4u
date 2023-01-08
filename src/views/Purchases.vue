@@ -1,8 +1,5 @@
 <script setup>
-import { useStore } from '../store/store';
-import axios from 'axios';
-import SiteModalVue from '../components/SiteModal.vue';
-//trending
+import ShoppingVue from '../components/Shopping.vue';
 </script>
 
 <template>
@@ -11,7 +8,9 @@ import SiteModalVue from '../components/SiteModal.vue';
   </div>
   <div>
     <p>Your Purchases:</p>
-    <p></p>
+    <Suspense>
+      <ShoppingVue />
+    </Suspense>
   </div>
 </template>
 

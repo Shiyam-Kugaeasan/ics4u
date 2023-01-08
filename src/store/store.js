@@ -5,7 +5,8 @@ export const useStore = defineStore('store', {
   state: () => {
     return {
       movies: [],
-      // cart[],
+      cart: new Map(),
+      count: 0,
     }
   },
   actions: {
@@ -20,9 +21,19 @@ export const useStore = defineStore('store', {
         return {
           id: movie.id,
           poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-          title: movie.title,
         }
       });
+
+      // this.cart = data.map((movie) => {
+      //   return {
+      //     id: movie.id,
+      //     bought: false,
+      //   }
+      // })
     },
+    
+    increment() {
+      this.count++;
+    }
   }
 });
