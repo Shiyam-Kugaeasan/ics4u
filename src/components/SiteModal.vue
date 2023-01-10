@@ -37,11 +37,11 @@ const purchase = () => {
     <div class="modal-outer-container" @click.self="emits('toggleModal')">
       <div class="modal-inner-container">
         <button class="close-button" @click="emits('toggleModal')">X</button>
+        <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="poster" class="poster">
         <div v-if="movie" class="items">
           <h1 class="title">Title: {{ movie.title }}</h1>
           <p class="release">Release Date: {{ movie.release_date }}</p>
           <p class="overview">{{ movie.overview }}</p>
-          <!-- <img src="`https://image.tmdb.org/t/p/w500/{{movie.poster_path}}`" alt="poster"> -->
           <button class="purchase" @click="purchase">Purchase</button>
         </div>
       </div>
@@ -82,19 +82,28 @@ const purchase = () => {
   color: white;
 }
 
+.modal-inner-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .items {
   display: flex;
   flex-direction: column;
   margin: 2%;
-}
-.poster {
-  height: 100px;
-  width: 50px;
+  padding-left: 2%;
 }
 
-.title .release .overview {
-  padding: 2%;
-  color: red;
+.release {
+  margin-top: 2%;
+}
+.overview {
+  margin-top: 2%;}
+
+.poster {
+  width: 230px;
+  height: 345px;
+  margin: 2%;
 }
 
 .purchase {
@@ -102,7 +111,8 @@ const purchase = () => {
   color: black;
   border-radius: 12px;
   padding: 2% 4%;
-  margin: 1% 20%;
+  margin: 0% 20%;
+  margin-bottom: 10%;
 }
 
 .purchase:hover {

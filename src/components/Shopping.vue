@@ -23,7 +23,6 @@ const getData = async () => {
   ).data;
   const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   console.log(poster);
-  console.log(store.movies);
 };
 
 await getData();

@@ -23,13 +23,6 @@ export const useStore = defineStore('store', {
           poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
         }
       });
-
-      // this.cart = data.map((movie) => {
-      //   return {
-      //     id: movie.id,
-      //     bought: false,
-      //   }
-      // })
     },
     
     increment() {
