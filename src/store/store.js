@@ -21,12 +21,17 @@ export const useStore = defineStore('store', {
         return {
           id: movie.id,
           poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+          title: movie.title,
         }
       });
     },
     
     increment() {
       this.count++;
+    },
+
+    purchase(id, data) {
+      this.cart.set(id, data);
     }
   }
 });

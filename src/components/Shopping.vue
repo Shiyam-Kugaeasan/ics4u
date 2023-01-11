@@ -1,43 +1,35 @@
 <script setup>
 import { useStore } from '../store/store';
-import axios from 'axios';
-import { ref } from 'vue';
-import SiteModalVue from '../components/SiteModal.vue';
-//trending
+
 const store = useStore();
-await store.getMovies();
-const movie = ref(false);
-const movieID = 76600;
-
-// for (let i = 0; i < 20; i++) {
-//   movieID = store.cart[i];
-// }
-
-const getData = async () => {
-  movie.value = (
-    await axios.get(`https://api.themoviedb.org/3/movie/${movieID}`, {
-      params: {
-        api_key: "d074056107be35c2b2df712431dcd31f",
-      },
-    })
-  ).data;
-  const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  console.log(poster);
-};
-
-await getData();
 </script>
 
 <template>
-  <!-- <button @click="getData">View</button> -->
-  <div v-if="movie">
-    <p v-for="movie in store.cart" class="movieTitle">{{ movie.title }}</p>
-    <img src="poster" alt="">
+  <div v-for="movie in Array.from(store.cart.values())" class="purchases">
+    <img :src="`https://image.tmdb.org/t/p/w500${movie.poster}`" alt="poster" class="poster"/>
+    <div>
+      <h1 class="title">{{ movie.title }}</h1>
+      <p class="overview">{{ movie.overview }}</p>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.movieTitle {
-  margin: 1%;
+.purchases {
+  display: flex;
+}
+
+.title {
+  margin: 5% 2%;
+}
+
+.overview {
+  margin: 2% 20% 2% 2%;
+}
+
+.poster {
+  height: 375px;
+  width: 250px;
+  margin: 2%;
 }
 </style>

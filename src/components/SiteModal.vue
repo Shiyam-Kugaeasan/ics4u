@@ -9,7 +9,6 @@ const emits = defineEmits(["toggleModal"]);
 const store = useStore();
 await store.getMovies();
 const movie = ref(false);
-// const purchases = new Array(20);
 
 const getData = async () => {
   movie.value = (
@@ -21,15 +20,14 @@ const getData = async () => {
   ).data;
 };
 await getData();
-// const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
 const purchase = () => {
-  store.cart[store.count] = props.id;
+  store.cart[store.count] = store.movies.find(({id}) => id === props.id);
   store.increment();
+  const found = store.movies.find(({id}) => id === props.id);
+  console.log(found);
   console.log(store.cart);
 }
-
-
 </script>
 
 <template>
@@ -42,7 +40,12 @@ const purchase = () => {
           <h1 class="title">Title: {{ movie.title }}</h1>
           <p class="release">Release Date: {{ movie.release_date }}</p>
           <p class="overview">{{ movie.overview }}</p>
-          <button class="purchase" @click="purchase">Purchase</button>
+          <button class="purchase" @click="store.purchase(props.id, {
+            id: movie.id,
+            title: movie.title,
+            poster: movie.poster_path,
+            overview: movie.overview,
+          })">Purchase</button>
         </div>
       </div>
     </div>

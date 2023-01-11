@@ -10,7 +10,7 @@ import ShoppingVue from '../components/Shopping.vue';
     </RouterLink>
   </div>
   <div>
-    <p>Your Purchases:</p>
+    <h2>Your Purchases:</h2>
     <Suspense>
       <ShoppingVue />
     </Suspense>
@@ -29,6 +29,8 @@ import ShoppingVue from '../components/Shopping.vue';
   margin-top: 1%;
   margin-bottom: 1%;
   margin-left: 80%;
+  background-color: red;
+  padding: 0% 2%;
 }
 
 h1 {
@@ -38,5 +40,9 @@ h1 {
   font-size: 45px;
   height: auto;
   text-align: center;
+}
+
+h2 {
+  margin: 1% 2%;
 }
 </style>
