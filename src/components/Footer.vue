@@ -2,7 +2,7 @@
 
 <template>
 <div class="footer">
-    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam est, necessitatibus nisi rem nihil placeat voluptatum praesentium quo fuga, sed, iste rerum minima corrupti quas. Officia nisi explicabo accusamus dolorem.</p>
+    <p class="info">MovieSite.com is a website to get purchase movies that are currently trending. Our selection is constantly changing to keep up with recent releases.</p>
 </div>
 </template>
 
@@ -17,7 +17,8 @@
 }
 
 .info {
-    margin: 0% 40%;
+    margin: 2% 40%;
     font-size: larger;
+    text-align: center;
 }
 </style>

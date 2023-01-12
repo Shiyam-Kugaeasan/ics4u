@@ -9,7 +9,7 @@ import ShoppingVue from '../components/Shopping.vue';
       <button @click="navigate" role="link" class="back-button">Back to Movies</button>
     </RouterLink>
   </div>
-  <div>
+  <div class="purchases-container">
     <h2>Your Purchases:</h2>
     <Suspense>
       <ShoppingVue />
@@ -25,12 +25,21 @@ import ShoppingVue from '../components/Shopping.vue';
   flex-direction: row;
 }
 
+.purchases-container {
+  height: 100%;
+}
+
 .back-button {
-  margin-top: 1%;
-  margin-bottom: 1%;
-  margin-left: 80%;
+  margin: 1% 0% 1% 80%;
   background-color: red;
   padding: 0% 2%;
+  border: 5px solid black;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: white;
 }
 
 h1 {

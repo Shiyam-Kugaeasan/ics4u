@@ -2,14 +2,14 @@
 
 <template>
 <div class="hero">
-    <p class="text">There are movies here.</p>
+    <h3 class="text">Find some of the most trending movies here.</h3>
 </div>
 </template>
 
 <style scoped>
 .hero {
     width: 100vw;
-    height: 82.5vh;
+    height: 76.5vh;
     display: flex;
     flex-direction: row;
     background-image: url("hero-background.jpg");
@@ -18,6 +18,8 @@
 .text {
     z-index: 2;
     font-size: xx-large;
-    margin-top: 15%;
+    margin: 15% 0% 30%;
+    padding: 5% 1% 6%;
+    background-color: #00000099;
 }
 </style>

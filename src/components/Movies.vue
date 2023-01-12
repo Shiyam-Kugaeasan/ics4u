@@ -37,7 +37,6 @@ const closeModal = () => {
 .posters {
   height: 1500px;
   width: 100vw;
-  background-color: grey;
 }
 
 img {
@@ -46,4 +45,3 @@ img {
   margin: 2%;
 }
 </style>
-<!-- <p v-for="movie in store.movies" class="titit"> {{movie.title}}</p> -->

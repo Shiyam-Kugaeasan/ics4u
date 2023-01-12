@@ -17,6 +17,8 @@ const store = useStore();
 <style scoped>
 .purchases {
   display: flex;
+  background: #00000099;
+  margin: 1%;
 }
 
 .title {
@@ -25,6 +27,7 @@ const store = useStore();
 
 .overview {
   margin: 2% 20% 2% 2%;
+  font-size: large;
 }
 
 .poster {

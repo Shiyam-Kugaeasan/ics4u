@@ -34,10 +34,6 @@ h1 {
   text-align: center;
 }
 
-.movies {
-  height: 100vh;
-}
-
 .cart {
   width: 80px;
   height: auto;

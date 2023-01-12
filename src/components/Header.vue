@@ -4,7 +4,7 @@ import {useRouter} from "vue-router"
 
 <template>
 <div class="header">
-    <h1>Movie Site</h1>
+    <h1>MovieSite.com</h1>
     <br>
     <RouterLink to="/login" custom v-slot="{navigate}">
         <button @click="navigate" role="link" class="button">Login</button>
@@ -20,17 +20,19 @@ import {useRouter} from "vue-router"
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     z-index: 3;
 }
 
+h1 {
+    margin-top: 1%;
+    font-size: 40px;
+}
 .button {
     background-color: red;
     border: 5px solid black;
     border-radius: 10px;    
-    /* padding-left: 10%;
-    padding-right: 10%; */
-    padding: 1%;
+    padding: 0.5% 5%;
+    margin-bottom: 1%;
 }
 
 .button:hover {

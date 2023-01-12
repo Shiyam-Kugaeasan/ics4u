@@ -20,14 +20,6 @@ const getData = async () => {
   ).data;
 };
 await getData();
-
-const purchase = () => {
-  store.cart[store.count] = store.movies.find(({id}) => id === props.id);
-  store.increment();
-  const found = store.movies.find(({id}) => id === props.id);
-  console.log(found);
-  console.log(store.cart);
-}
 </script>
 
 <template>
@@ -88,12 +80,14 @@ const purchase = () => {
 .modal-inner-container {
   display: flex;
   flex-direction: row;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .items {
   display: flex;
   flex-direction: column;
   margin: 2%;
+  margin-left: 1%;
   padding-left: 2%;
 }
 
@@ -114,22 +108,10 @@ const purchase = () => {
   color: black;
   border-radius: 12px;
   padding: 2% 4%;
-  margin: 0% 20%;
-  margin-bottom: 10%;
+  margin: 5% 20% 10%;
 }
 
 .purchase:hover {
   background-color: white;
 }
 </style>
-
-<!-- infor = [];
-  this.infor = data.map((movie) => {
-    return {
-      id: movie.id,
-      poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-      title: movie.title,
-    }
-  }); -->
-  <!-- const check = store.cart.find(({id}) => id === purchases);
-  check.bought = true; -->
