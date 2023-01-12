@@ -8,11 +8,12 @@
 
 <style scoped>
 .hero {
-    width: 100vw;
+    width: 100%;
     height: 76.5vh;
     display: flex;
     flex-direction: row;
     background-image: url("hero-background.jpg");
+    background-size: cover;
 }
 
 .text {

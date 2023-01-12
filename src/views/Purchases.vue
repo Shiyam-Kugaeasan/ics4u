@@ -30,7 +30,7 @@ import ShoppingVue from '../components/Shopping.vue';
 }
 
 .back-button {
-  margin: 1% 0% 1% 80%;
+  margin: 1% 2% 1% 80%;
   background-color: red;
   padding: 0% 2%;
   border: 5px solid black;
