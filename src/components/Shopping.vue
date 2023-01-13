@@ -6,7 +6,7 @@ const store = useStore();
 
 <template>
   <div v-for="movie in Array.from(store.cart.values())" class="purchases">
-    <img :src="`https://image.tmdb.org/t/p/w500${movie.poster}`" alt="poster" class="poster"/>
+    <img :src="`https://image.tmdb.org/t/p/w500${movie.poster}`" alt="poster" class="poster" />
     <div>
       <h1 class="title">{{ movie.title }}</h1>
       <p class="overview">{{ movie.overview }}</p>

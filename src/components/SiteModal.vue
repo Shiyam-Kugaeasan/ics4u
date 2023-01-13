@@ -94,8 +94,10 @@ await getData();
 .release {
   margin-top: 2%;
 }
+
 .overview {
-  margin-top: 2%;}
+  margin-top: 2%;
+}
 
 .poster {
   width: 230px;

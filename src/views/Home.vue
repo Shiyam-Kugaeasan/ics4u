@@ -5,15 +5,15 @@ import FooterVue from '../components/Footer.vue';
 </script>
 
 <template>
-    <div class="home">
-        <HeaderVue />
-        <HeroVue />
-        <FooterVue />
-    </div>
+  <div class="home">
+    <HeaderVue />
+    <HeroVue />
+    <FooterVue />
+  </div>
 </template>
 
 <style scoped>
 .home {
-    color: white;
+  color: white;
 }
 </style>

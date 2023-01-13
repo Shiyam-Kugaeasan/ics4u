@@ -5,7 +5,7 @@ import ShoppingVue from '../components/Shopping.vue';
 <template>
   <div class="purchase-header">
     <h1>Purchases</h1>
-    <RouterLink to="/movies" custom v-slot="{navigate}">
+    <RouterLink to="/movies" custom v-slot="{ navigate }">
       <button @click="navigate" role="link" class="back-button">Back to Movies</button>
     </RouterLink>
   </div>

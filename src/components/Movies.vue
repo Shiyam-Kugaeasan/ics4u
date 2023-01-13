@@ -4,8 +4,6 @@ import { ref } from 'vue';
 import SiteModal from '../components/SiteModal.vue';
 
 const store = useStore();
-await store.getMovies();
-
 const showModal = ref(false);
 const selectedId = ref(0);
 
@@ -17,6 +15,8 @@ const openModal = (id) => {
 const closeModal = () => {
   showModal.value = false;
 };
+
+await store.getMovies();
 </script>
 
 <template>

@@ -5,7 +5,7 @@ import MoviesVue from "../components/Movies.vue";
 <template>
   <div class="account-header">
     <h1>Movies</h1>
-    <RouterLink to="/purchases" custom v-slot="{navigate}">
+    <RouterLink to="/purchases" custom v-slot="{ navigate }">
       <img src="shopping-cart.png" alt="To purchases." @click="navigate" role="link" class="cart">
     </RouterLink>
   </div>
