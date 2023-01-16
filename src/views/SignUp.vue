@@ -9,16 +9,16 @@ import {
 
 const username = ref("");
 const email = ref("");
-const userPassword = ref("");
-const emailPassword = ref("");
+const firstPassword = ref("");
+const secondPassword = ref("");
 
 const registerWithEmail = async () => {
-  if (emailPassword.value !== userPassword.value) {
+  if (firstPassword.value !== secondPassword.value) {
     console.log("Issue with Password.");
     return;
   }
   try {
-    await createUserWithEmailAndPassword(auth, email.value, emailPassword.value);
+    await createUserWithEmailAndPassword(auth, email.value, firstPassword.value);
   } catch (error) {
     console.log(error);
   }
@@ -32,9 +32,9 @@ const registerWithGoogle = async () => {
 </script>
 
 <template>
-  <div class="login">
-    <div class="login-box">
-      <h1>Login</h1>
+  <div class="signUp">
+    <div class="sign-box">
+      <h1>Register</h1>
       <h2>Register with Google</h2>
       <button @click="registerWithGoogle">Google Register</button>
       <hr />
@@ -42,8 +42,8 @@ const registerWithGoogle = async () => {
       <form @submit.prevent="registerWithEmail">
         <input v-model="username" type="text" placeholder="Username">
         <input v-model="email" type="email" placeholder="E-mail">
-        <input v-model="emailPassword" type="password" placeholder="Enter Password">
-        <input v-model="userPassword" type="password" placeholder="Re-enter Password">
+        <input v-model="firstPassword" type="password" placeholder="Enter Password">
+        <input v-model="secondPassword" type="password" placeholder="Re-enter Password">
         <input type="submit" value="Register" />
       </form>
     </div>
@@ -51,7 +51,7 @@ const registerWithGoogle = async () => {
 </template>
 
 <style scoped>
-.login {
+.signUp {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +60,7 @@ const registerWithGoogle = async () => {
   background-color: black;
 }
 
-.login-box {
+.sign-box {
   display: flex;
   flex-direction: column;
   justify-content: center;

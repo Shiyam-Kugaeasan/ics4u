@@ -74,6 +74,7 @@ const search = async (direction) => {
   height: 1500px;
   width: 100vw;
 }
+
 img {
   width: 200px;
   height: 300px;

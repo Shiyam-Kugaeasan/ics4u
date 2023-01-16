@@ -3,14 +3,23 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { auth } from "../firebase/index";
 import {
-  getAuth,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 
-const router = useRouter();
+const provider = new GoogleAuthProvider();
 const username = ref("");
 const password = ref("");
-const error = ref(false);
+
+signInWithPopup(auth, provider).then((result) => {
+  const credential = GoogleAuthProvider.credentialFromResult(result);
+  const token = credential.accessToken;
+  const user = result.user;
+  console.log(user);
+}).catch((error) => {
+  console.log(error);
+})
 
 const login = () => {
   if (username.value === "tmdb" && password.value === "movies") {
@@ -20,6 +29,10 @@ const login = () => {
     error.value = true;
   }
 };
+
+// const loginWithGoogle = () => {
+//   const credential = GoogleAuthProvider.credentialFromResult(result);
+// }
 </script>
 
 <template>
@@ -35,9 +48,7 @@ const login = () => {
         <br>
         <input type="submit">
       </form>
-      <div v-if="error">
-        <p>Incorrect username or password.</p>
-      </div>
+      <h2>Login with Google</h2>
     </div>
   </div>
 </template>

@@ -9,6 +9,7 @@ const store = useStore();
     <div>
       <h1 class="title">{{ movie.title }}</h1>
       <p class="overview">{{ movie.overview }}</p>
+      <button @click="store.remove(movie.id)">X</button>
     </div>
   </div>
 </template>
@@ -19,13 +20,16 @@ const store = useStore();
   background: #00000099;
   margin: 1%;
 }
+
 .title {
   margin: 5% 2%;
 }
+
 .overview {
   margin: 2% 20% 2% 2%;
   font-size: large;
 }
+
 .poster {
   height: 375px;
   width: 250px;
