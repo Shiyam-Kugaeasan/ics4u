@@ -7,8 +7,12 @@ import { useRouter } from "vue-router"
     <h1>MovieSite.com</h1>
     <br>
     <RouterLink to="/signup" custom v-slot="{ navigate }">
+      <button @click="navigate" role="link" class="button">Sign Up</button>
+    </RouterLink>
+    <RouterLink to="/login" custom v-slot="{ navigate }">
       <button @click="navigate" role="link" class="button">Login</button>
     </RouterLink>
+
   </div>
 </template>
 
