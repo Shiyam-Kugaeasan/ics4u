@@ -7,19 +7,20 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+import { async } from "@firebase/util";
 
 const provider = new GoogleAuthProvider();
 const username = ref("");
 const password = ref("");
 
-signInWithPopup(auth, provider).then((result) => {
-  const credential = GoogleAuthProvider.credentialFromResult(result);
-  const token = credential.accessToken;
-  const user = result.user;
-  console.log(user);
-}).catch((error) => {
-  console.log(error);
-})
+// signInWithPopup(auth, provider).then((result) => {
+//   const credential = GoogleAuthProvider.credentialFromResult(result);
+//   const token = credential.accessToken;
+//   const user = result.user;
+//   console.log(user);
+// }).catch((error) => {
+//   console.log(error);
+// })
 
 const login = () => {
   if (username.value === "tmdb" && password.value === "movies") {
@@ -30,9 +31,13 @@ const login = () => {
   }
 };
 
-// const loginWithGoogle = () => {
-//   const credential = GoogleAuthProvider.credentialFromResult(result);
-// }
+const loginWithGoogle = async () => {
+  const popup = await signInWithPopup(auth, provider);
+  const credential = GoogleAuthProvider.credentialFromResult(result);
+  const token = credential.accessToken;
+  const user = result.user;
+  console.log(user);
+}
 </script>
 
 <template>

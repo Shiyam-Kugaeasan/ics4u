@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { auth } from "../firebase/index";
 import {
   createUserWithEmailAndPassword,
@@ -19,6 +20,7 @@ const registerWithEmail = async () => {
   }
   try {
     await createUserWithEmailAndPassword(auth, email.value, firstPassword.value);
+    router.push("./movies");
   } catch (error) {
     console.log(error);
   }
@@ -27,6 +29,7 @@ const registerWithEmail = async () => {
 const registerWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const user = await signInWithPopup(auth, provider);
+  router.push("./movies");
   console.log(user);
 };
 </script>
