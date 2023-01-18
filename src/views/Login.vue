@@ -76,6 +76,7 @@ const loginWithPassword = async () => {
         <input type="submit">
       </form>
       <h2>Login with Google</h2>
+      <button @click="loginWithGoogle()">Google</button>
     </div>
   </div>
 </template>
