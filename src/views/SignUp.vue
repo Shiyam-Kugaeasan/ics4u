@@ -8,6 +8,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
+const router = useRouter();
 const username = ref("");
 const email = ref("");
 const firstPassword = ref("");

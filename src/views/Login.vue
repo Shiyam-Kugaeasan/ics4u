@@ -7,11 +7,11 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { async } from "@firebase/util";
 
-const provider = new GoogleAuthProvider();
+const router = useRouter();
 const username = ref("");
 const password = ref("");
+const email = ref("");
 
 // signInWithPopup(auth, provider).then((result) => {
 //   const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -32,21 +32,43 @@ const login = () => {
 };
 
 const loginWithGoogle = async () => {
+  const provider = new GoogleAuthProvider();
   const popup = await signInWithPopup(auth, provider);
   const credential = GoogleAuthProvider.credentialFromResult(result);
   const token = credential.accessToken;
   const user = result.user;
   console.log(user);
 }
+
+const loginWithPassword = async () => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    router.push("./movies");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// signInWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // Signed in
+//     const user = userCredential.user;
+
+//     // ...
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//   });
 </script>
 
 <template>
   <div class="login">
     <div class="login-box">
       <h1>Login</h1>
-      <form @submit.prevent="login()">
+      <form @submit.prevent="loginWithPassword()">
         <p>Username: </p>
-        <input type="text" placeholder="Username" v-model="username" class="username">
+        <input type="email" placeholder="E-mail" v-model="email" class="username">
         <br>
         <p class="password-text">Password: </p>
         <input type="password" placeholder="Password" v-model="password" class="password">
