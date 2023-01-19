@@ -47,7 +47,7 @@ const search = async (direction) => {
   result.value = data.results.map((movie) => {
     return {
       id: movie.id,
-      poster: movie.poster_path,
+      poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
     };
   });
 };
@@ -56,9 +56,9 @@ const search = async (direction) => {
 </script>
 
 <template>
-  <div class="posters">
+  <!-- <div class="posters">
     <img v-for="movie in store.movies" :src="movie.poster" alt="poster" @click="openModal(movie.id)" />
-  </div>
+  </div> -->
   <select v-model="genre" @change="getGenres()">
     <option value="Action">Action</option>
     <option value="Adventure">Adventure</option>
@@ -66,6 +66,15 @@ const search = async (direction) => {
     <option value="Comedy">Comedy</option>
     <option value="Fantasy">Fantasy</option>
   </select>
+  <input type="search" v-model="criteria" @keydown.enter="search(0)">
+  <div class="posters">
+    <template v-if="result.length">
+      <img v-for="movie in result" :src="movie.poster" alt="poster" @click="openModal(movie.id)">
+    </template>
+    <template v-else>
+      <img v-for="movie in store.movies" :src="movie.poster" alt="poster" @click="openModal(movie.id)">
+    </template>
+  </div>
   <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
 </template>
 
