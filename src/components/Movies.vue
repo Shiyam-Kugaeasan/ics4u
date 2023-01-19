@@ -59,7 +59,6 @@ const search = async (direction) => {
   <div class="posters">
     <img v-for="movie in store.movies" :src="movie.poster" alt="poster" @click="openModal(movie.id)" />
   </div>
-  <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
   <select v-model="genre" @change="getGenres()">
     <option value="Action">Action</option>
     <option value="Adventure">Adventure</option>
@@ -67,6 +66,7 @@ const search = async (direction) => {
     <option value="Comedy">Comedy</option>
     <option value="Fantasy">Fantasy</option>
   </select>
+  <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />
 </template>
 
 <style scoped>

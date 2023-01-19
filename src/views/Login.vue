@@ -33,20 +33,32 @@ const login = () => {
 
 const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  const popup = await signInWithPopup(auth, provider);
-  const credential = GoogleAuthProvider.credentialFromResult(result);
-  const token = credential.accessToken;
-  const user = result.user;
-  console.log(user);
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+    router.push("./movies");
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+  });
 }
 
 const loginWithPassword = async () => {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
     router.push("./movies");
-  } catch (error) {
-    console.log(error);
-  }
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 }
 
 // signInWithEmailAndPassword(auth, email, password)

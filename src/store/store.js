@@ -15,7 +15,7 @@ export const useStore = defineStore('store', {
     async addToFirestore() {
       const genres = new Map([[28, "Action"], [12, "Adventure"], [16, "Animation"], [35, "Comedy"], [14, "Fantasy"]]);
 
-      genres.forEach(async(value, key) => {
+      genres.forEach(async (value, key) => {
         let data = (await axios.get("https://api.themoviedb.org/3/discover/movie", {
           params: {
             api_key: "d074056107be35c2b2df712431dcd31f",
@@ -27,7 +27,7 @@ export const useStore = defineStore('store', {
         data = data.map((movie) => {
           return {
             id: movie.id,
-            poster: movie.poster_path,
+            poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
           }
         });
         await setDoc(doc(firestore, "Genre", value), {data});
