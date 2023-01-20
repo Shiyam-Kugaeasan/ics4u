@@ -67,12 +67,19 @@ const search = async (direction) => {
     <option value="Fantasy">Fantasy</option>
   </select>
   <input type="search" v-model="criteria" @keydown.enter="search(0)">
+  <template v-if="result.length">
+    <div>
+      <button v-show="page > 1" @click="search(-1)">Prev</button>
+      <h1>{{ `Page ${page} of ${pageLimit}` }}</h1>
+      <button v-show="page < 1" @click="seach(1)">Next</button>
+    </div>
+  </template>
   <div class="posters">
     <template v-if="result.length">
-      <img v-for="movie in result" :src="movie.poster" alt="poster" @click="openModal(movie.id)">
+      <img v-for="movie in result" :id="movie.id" :src="movie.poster" alt="poster" @click="openModal(movie.id)">
     </template>
     <template v-else>
-      <img v-for="movie in store.movies" :src="movie.poster" alt="poster" @click="openModal(movie.id)">
+      <img v-for="movie in store.movies" :id="movie.id" :src="movie.poster" alt="poster" @click="openModal(movie.id)">
     </template>
   </div>
   <SiteModal v-if="showModal" @toggleModal="closeModal()" :id="selectedId" />

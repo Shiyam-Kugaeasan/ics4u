@@ -7,7 +7,6 @@ const props = defineProps(["id"]);
 const emits = defineEmits(["toggleModal"]);
 
 const store = useStore();
-await store.getMovies();
 const movie = ref(false);
 
 const getData = async () => {
