@@ -56,9 +56,6 @@ const search = async (direction) => {
 </script>
 
 <template>
-  <!-- <div class="posters">
-    <img v-for="movie in store.movies" :src="movie.poster" alt="poster" @click="openModal(movie.id)" />
-  </div> -->
   <select v-model="genre" @change="getGenres()">
     <option value="Action">Action</option>
     <option value="Adventure">Adventure</option>

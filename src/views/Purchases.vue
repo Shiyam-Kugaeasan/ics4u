@@ -24,20 +24,25 @@ import ShoppingVue from '../components/Shopping.vue';
   display: flex;
   flex-direction: row;
 }
+
 .purchases-container {
   height: 100%;
 }
+
 .back-button {
-  margin: 1% 2% 1% 80%;
+  margin: 2% 2% 2% 73%;
   background-color: red;
   padding: 0% 2%;
   border: 5px solid black;
   border-radius: 10px;
   font-weight: bold;
+  font-size: medium;
 }
+
 .back-button:hover {
   background-color: white;
 }
+
 h1 {
   margin-left: 1%;
   padding: 1%;
@@ -46,6 +51,7 @@ h1 {
   height: auto;
   text-align: center;
 }
+
 h2 {
   margin: 1% 2%;
 }

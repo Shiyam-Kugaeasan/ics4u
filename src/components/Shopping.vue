@@ -1,5 +1,6 @@
 <script setup>
 import { useStore } from '../store/store';
+
 const store = useStore();
 </script>
 
@@ -9,8 +10,8 @@ const store = useStore();
     <div>
       <h1 class="title">{{ movie.title }}</h1>
       <p class="overview">{{ movie.overview }}</p>
-      <button @click="store.remove(movie.id)">X</button>
     </div>
+    <button @click="store.remove(movie.id)" class="remove-button">X</button>
   </div>
 </template>
 
@@ -34,5 +35,9 @@ const store = useStore();
   height: 375px;
   width: 250px;
   margin: 2%;
+}
+
+.remove-button {
+  margin: 16% 2%;
 }
 </style>

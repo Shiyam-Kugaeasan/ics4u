@@ -22,8 +22,9 @@ import MoviesVue from "../components/Movies.vue";
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
 }
+
 h1 {
   margin-left: 1%;
   padding: 1%;
@@ -32,10 +33,11 @@ h1 {
   height: auto;
   text-align: center;
 }
+
 .cart {
   width: 80px;
   height: auto;
-  margin: 1%;
-  margin-right: 2%;
+  margin: 2%;
+  margin-right: 4%;
 }
 </style>
