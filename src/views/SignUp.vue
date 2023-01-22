@@ -47,8 +47,6 @@ const registerWithGoogle = async () => {
         <input v-model="secondPassword" type="password" placeholder="Re-enter Password">
         <input type="submit" value="Register" class="submit" />
       </form>
-      <!-- <hr> -->
-      <!-- <h2 @click="registerWithGoogle">Register with Google</h2> -->
       <button @click="registerWithGoogle" class="googleRegister">Register with Google</button>
     </div>
   </div>

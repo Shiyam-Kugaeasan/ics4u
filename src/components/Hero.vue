@@ -15,6 +15,7 @@
   background-image: url("hero-background.jpg");
   background-size: cover;
 }
+
 .text {
   z-index: 2;
   font-size: xx-large;

@@ -16,6 +16,7 @@
   justify-content: center;
   z-index: 3;
 }
+
 .info {
   margin: 2% 40%;
   font-size: larger;

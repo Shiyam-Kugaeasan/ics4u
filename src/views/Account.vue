@@ -56,8 +56,10 @@ const search = async (direction) => {
 
 <template>
   <div class="account-header">
-    <h1>Movies</h1>
-    <input type="search" v-model="criteria" @keydown.enter="search(0)" class="searchbar">
+    <div class="half-header">
+      <h1>Movies</h1>
+      <input type="search" v-model="criteria" @keydown.enter="search(0)" class="searchbar">
+    </div>
     <RouterLink to="/purchases" custom v-slot="{ navigate }">
       <img src="shopping-cart.png" alt="To purchases." @click="navigate" role="link" class="cart">
     </RouterLink>
@@ -79,7 +81,8 @@ const search = async (direction) => {
     </template>
     <div class="posters">
       <template v-if="result.length">
-        <img v-for="movie in result" :id="movie.id" :src="movie.poster" alt="No poster available" @click="openModal(movie.id)">
+        <img v-for="movie in result" :id="movie.id" :src="movie.poster" alt="No poster available"
+          @click="openModal(movie.id)">
       </template>
       <template v-else>
         <img v-for="movie in store.movies" :id="movie.id" :src="movie.poster" alt="poster" @click="openModal(movie.id)">
@@ -107,8 +110,13 @@ h1 {
   text-align: center;
 }
 
+.half-header {
+  margin: 0% 2%;
+}
+
 .searchbar {
   margin: 5% 40% 5% 0%;
+  width: 200px;
 }
 
 .cart {
@@ -140,8 +148,6 @@ img {
   display: flex;
   flex-direction: row;
   margin: 0% 2%;
-  /* height: 60px;
-  width: 100vw; */
 }
 
 .next .prev {

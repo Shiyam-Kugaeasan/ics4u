@@ -9,30 +9,23 @@ import {
 } from "firebase/auth";
 
 const router = useRouter();
-const username = ref("");
 const password = ref("");
 const email = ref("");
 
 const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      router.push("./movies");
-    }).catch((error) => {
-      console.log(error);
-    });
+  const user = await signInWithPopup(auth, provider);
+  router.push("./movies");
+  console.log(user);
 }
 
 const loginWithPassword = async () => {
-  signInWithEmailAndPassword(auth, email.value, password.value)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      router.push("./movies");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    await signInWithEmailAndPassword(auth, email.value, password.value);
+    router.push("./movies");
+  } catch (error) {
+    console.log(error);
+  }
 }
 </script>
 
@@ -41,9 +34,7 @@ const loginWithPassword = async () => {
     <div class="login-box">
       <h1>Login</h1>
       <form @submit.prevent="loginWithPassword()">
-        <!-- <p>Username: </p> -->
-        <input type="email" placeholder="E-mail" v-model="email" class="username">
-        <!-- <p class="password-text">Password: </p> -->
+        <input type="email" placeholder="E-mail" v-model="email" class="email">
         <input type="password" placeholder="Password" v-model="password" class="password">
         <input type="submit" class="submit">
       </form>

@@ -57,6 +57,7 @@ await getData();
   background: #00000099;
   z-index: 3;
 }
+
 .modal-outer-container .modal-inner-container {
   background-color: #1F2123;
   color: white;
@@ -64,6 +65,7 @@ await getData();
   height: 400px;
   position: relative;
 }
+
 .modal-outer-container .modal-inner-container .close-button {
   position: absolute;
   right: 0px;
@@ -74,11 +76,13 @@ await getData();
   font-size: 1.25rem;
   color: white;
 }
+
 .modal-inner-container {
   display: flex;
   flex-direction: row;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 .items {
   display: flex;
   flex-direction: column;
@@ -86,17 +90,21 @@ await getData();
   margin-left: 1%;
   padding-left: 2%;
 }
+
 .release {
   margin-top: 2%;
 }
+
 .overview {
   margin-top: 2%;
 }
+
 .poster {
   width: 230px;
   height: 345px;
   margin: 2%;
 }
+
 .purchase {
   background-color: red;
   color: black;
@@ -104,6 +112,7 @@ await getData();
   padding: 2% 4%;
   margin: 5% 20% 10%;
 }
+
 .purchase:hover {
   background-color: white;
 }
