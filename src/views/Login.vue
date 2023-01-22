@@ -13,65 +13,27 @@ const username = ref("");
 const password = ref("");
 const email = ref("");
 
-// signInWithPopup(auth, provider).then((result) => {
-//   const credential = GoogleAuthProvider.credentialFromResult(result);
-//   const token = credential.accessToken;
-//   const user = result.user;
-//   console.log(user);
-// }).catch((error) => {
-//   console.log(error);
-// })
-
-const login = () => {
-  if (username.value === "tmdb" && password.value === "movies") {
-    router.push("./movies");
-  }
-  else {
-    error.value = true;
-  }
-};
-
 const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
-  .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-    router.push("./movies");
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-  });
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      router.push("./movies");
+    }).catch((error) => {
+      console.log(error);
+    });
 }
 
 const loginWithPassword = async () => {
-  signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    router.push("./movies");
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      router.push("./movies");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
-
-// signInWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in
-//     const user = userCredential.user;
-
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//   });
 </script>
 
 <template>
@@ -79,16 +41,13 @@ const loginWithPassword = async () => {
     <div class="login-box">
       <h1>Login</h1>
       <form @submit.prevent="loginWithPassword()">
-        <p>Username: </p>
+        <!-- <p>Username: </p> -->
         <input type="email" placeholder="E-mail" v-model="email" class="username">
-        <br>
-        <p class="password-text">Password: </p>
+        <!-- <p class="password-text">Password: </p> -->
         <input type="password" placeholder="Password" v-model="password" class="password">
-        <br>
-        <input type="submit">
+        <input type="submit" class="submit">
       </form>
-      <h2>Login with Google</h2>
-      <button @click="loginWithGoogle()">Google</button>
+      <button @click="loginWithGoogle()" class="googleLogin">Login with Google</button>
     </div>
   </div>
 </template>
@@ -115,15 +74,32 @@ const loginWithPassword = async () => {
 
 form {
   display: flex;
-  flex: column;
-  margin: 5%;
+  flex-direction: column;
+  margin: 4% 5% 5%;
+}
+
+input {
+  width: 250px;
+}
+
+.submit {
+  width: 258px;
 }
 
 h1 {
   margin-bottom: 5%;
 }
 
-.password-text {
-  margin-left: 5%;
+.googleLogin {
+  font-size: 22px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: blue;
+  color: white;
+  padding: 1%;
+}
+
+.googleLogin:hover {
+  background-color: white;
+  color: black;
 }
 </style>

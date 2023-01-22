@@ -6,13 +6,14 @@ import { useRouter } from "vue-router"
   <div class="header">
     <h1>MovieSite.com</h1>
     <br>
-    <RouterLink to="/signup" custom v-slot="{ navigate }">
-      <button @click="navigate" role="link" class="button">Sign Up</button>
-    </RouterLink>
-    <RouterLink to="/login" custom v-slot="{ navigate }">
-      <button @click="navigate" role="link" class="button">Login</button>
-    </RouterLink>
-
+    <div class="buttons">
+      <RouterLink to="/signup" custom v-slot="{ navigate }">
+        <button @click="navigate" role="link" class="button signup">Sign Up</button>
+      </RouterLink>
+      <RouterLink to="/login" custom v-slot="{ navigate }">
+        <button @click="navigate" role="link" class="button login">Login</button>
+      </RouterLink>
+    </div>
   </div>
 </template>
 
@@ -26,10 +27,19 @@ import { useRouter } from "vue-router"
   align-items: center;
   z-index: 3;
 }
+
 h1 {
   margin-top: 1%;
   font-size: 40px;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: center;
+}
+
 .button {
   background-color: red;
   border: 5px solid black;
@@ -37,6 +47,11 @@ h1 {
   padding: 0.5% 5%;
   margin-bottom: 1%;
 }
+
+.login {
+  padding: 0.5% 5.5%;
+}
+
 .button:hover {
   background-color: white;
 }
